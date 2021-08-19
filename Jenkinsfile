@@ -13,11 +13,8 @@ pipeline {
 				input 'Do you want to proceed?'
 			}
 		}
-	    stage('Preparation') {
-		    steps{
-			    env.PATH = env.PATH + ";c:\\Windows\\System32"
-		    }
-	    }
+	    
+			  
 	stage ('pre-build'){
 			parallel{
 				stage ('unittest'){
@@ -38,6 +35,7 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 git 'https://github.com/capgteam/bankapp.git'
+		env.PATH = env.PATH + ";c:\\Windows\\System32"
                 
                 // Run Maven on a Unix agent.
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
