@@ -6,6 +6,9 @@ pipeline {
         maven "maven3"
 	
     }
+	environment{
+		env.PATH = env.PATH + ";c:\\Windows\\System32"
+	}
    
     stages {
 		stage ('Test'){
@@ -35,7 +38,7 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 git 'https://github.com/capgteam/bankapp.git'
-		env.PATH = env.PATH + ";c:\\Windows\\System32"
+		
                 
                 // Run Maven on a Unix agent.
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
