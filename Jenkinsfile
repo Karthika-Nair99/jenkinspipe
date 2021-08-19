@@ -6,13 +6,16 @@ pipeline {
         maven "maven3"
 	
     }
-    env.PATH = env.PATH + ";c:\\Windows\\System32"
+   
     stages {
 		stage ('Test'){
 			steps{
 				input 'Do you want to proceed?'
 			}
 		}
+	    stage('Preparation') {
+	             env.PATH = env.PATH + ";c:\\Windows\\System32"
+	    }
 	stage ('pre-build'){
 			parallel{
 				stage ('unittest'){
