@@ -14,7 +14,9 @@ pipeline {
 			}
 		}
 	    stage('Preparation') {
-	             env.PATH = env.PATH + ";c:\\Windows\\System32"
+		    steps{
+			    env.PATH = env.PATH + ";c:\\Windows\\System32"
+		    }
 	    }
 	stage ('pre-build'){
 			parallel{
